@@ -1,0 +1,88 @@
+import type { backendInterface } from "../backend";
+
+export const mockBackend: backendInterface = {
+  addPortfolioItem: async () => ({
+    id: BigInt(1),
+    title: "Enterprise ERP Integration",
+    client: "State Agency",
+    year: BigInt(2023),
+    category: "Enterprise",
+    technologies: ["SAP", "Java", ".NET"],
+    description: "Full ERP integration for a large state agency.",
+  }),
+  addService: async () => ({
+    id: BigInt(1),
+    title: "IT Consulting",
+    icon: "💡",
+    description: "Strategic IT consulting services.",
+    benefits: ["Cost reduction", "Efficiency gains"],
+  }),
+  checkAdminCredentials: async () => true,
+  deletePortfolioItem: async () => true,
+  deleteService: async () => true,
+  listContactMessages: async () => [
+    {
+      id: BigInt(1),
+      subject: "Inquiry",
+      name: "John Doe",
+      email: "john@example.com",
+      message: "I would like more information about your services.",
+      timestamp: BigInt(Date.now()),
+      phone: "555-123-4567",
+    },
+  ],
+  listPortfolioItems: async () => [
+    {
+      id: BigInt(1),
+      title: "Cloud Migration Project",
+      client: "Federal Agency",
+      year: BigInt(2023),
+      category: "Cloud",
+      technologies: ["AWS", "Azure", "Docker"],
+      description: "Large-scale cloud migration for a federal agency.",
+    },
+    {
+      id: BigInt(2),
+      title: "SAP Implementation",
+      client: "State Department",
+      year: BigInt(2022),
+      category: "Enterprise",
+      technologies: ["SAP", "Java", "Oracle"],
+      description: "Full SAP implementation and support.",
+    },
+  ],
+  listServices: async () => [
+    {
+      id: BigInt(1),
+      title: "IT Consulting & Strategy",
+      icon: "💡",
+      description: "Strategic IT planning and consulting services for modern enterprises.",
+      benefits: ["Cost reduction", "Technology roadmap", "Expert guidance"],
+    },
+    {
+      id: BigInt(2),
+      title: "Software Development",
+      icon: "💻",
+      description: "Custom software development using Java, .NET, Python, and more.",
+      benefits: ["Agile delivery", "Scalable solutions", "Quality assurance"],
+    },
+    {
+      id: BigInt(3),
+      title: "Cloud Solutions",
+      icon: "☁️",
+      description: "End-to-end cloud migration and management on AWS, Azure, and GCP.",
+      benefits: ["High availability", "Cost optimization", "Security"],
+    },
+  ],
+  submitContactMessage: async () => ({
+    id: BigInt(1),
+    subject: "General Inquiry",
+    name: "Test User",
+    email: "test@example.com",
+    message: "Hello!",
+    timestamp: BigInt(Date.now()),
+    phone: "555-000-0000",
+  }),
+  updatePortfolioItem: async () => true,
+  updateService: async () => true,
+};

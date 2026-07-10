@@ -1,0 +1,57 @@
+// Version: 1.0.0
+type ContactMessage__427996617 =
+  {
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    phone : Text;
+    subject : Text;
+    timestamp : Int
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type PortfolioItem__691956353 =
+  {
+    category : Text;
+    client : Text;
+    description : Text;
+    id : Nat;
+    technologies : [Text];
+    title : Text;
+    year : Nat
+  };
+type Service__748327548 =
+  {
+    benefits : [Text];
+    description : Text;
+    icon : Text;
+    id : Nat;
+    title : Text
+  };
+actor {
+  stable contactMessages :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ContactMessage__427996617]];
+      var elementIndex : Nat__490723111
+    };
+  stable portfolioItems :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PortfolioItem__691956353]];
+      var elementIndex : Nat__490723111
+    };
+  stable services :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Service__748327548]];
+      var elementIndex : Nat__490723111
+    };
+  stable state :
+    {
+      var nextMessageId : Nat;
+      var nextPortfolioId : Nat;
+      var nextServiceId : Nat
+    }
+};

@@ -1,0 +1,46 @@
+type Service = 
+ record {
+   benefits: vec text;
+   description: text;
+   icon: text;
+   id: nat;
+   title: text;
+ };
+type PortfolioItem = 
+ record {
+   category: text;
+   client: text;
+   description: text;
+   id: nat;
+   technologies: vec text;
+   title: text;
+   year: nat;
+ };
+type ContactMessage = 
+ record {
+   email: text;
+   id: nat;
+   message: text;
+   name: text;
+   phone: text;
+   subject: text;
+   timestamp: int;
+ };
+service : {
+  addPortfolioItem: (title: text, client: text, year: nat, category: 
+   text, technologies: vec text, description: text) -> (PortfolioItem);
+  addService: (title: text, description: text, icon: text, benefits:
+   vec text) -> (Service);
+  checkAdminCredentials: (username: text, password: text) -> (bool) query;
+  deletePortfolioItem: (id: nat) -> (bool);
+  deleteService: (id: nat) -> (bool);
+  listContactMessages: () -> (vec ContactMessage) query;
+  listPortfolioItems: () -> (vec PortfolioItem) query;
+  listServices: () -> (vec Service) query;
+  submitContactMessage: (name: text, email: text, phone: text, subject: 
+   text, message: text) -> (ContactMessage);
+  updatePortfolioItem: (id: nat, title: text, client: text, year: nat,
+   category: text, technologies: vec text, description: text) -> (bool);
+  updateService: (id: nat, title: text, description: text, icon: text,
+   benefits: vec text) -> (bool);
+}

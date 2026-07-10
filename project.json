@@ -1,0 +1,20 @@
+{
+  "overview": "A professional website for gSoft, Inc. featuring warm golden tones, animated tech wave backgrounds, 6 service pages, portfolio showcase, and a simple admin panel for content management.",
+  "features": [
+    "Warm golden/amber light background design with dark contrasting fonts",
+    "Animated parabolic waves with tech names (Java, .NET, SAP, AI) as background",
+    "6 service pages: E-Business, Web Dev, Mobile, Offshore, Managed Hosting, IT Staffing",
+    "Portfolio showcase with admin management",
+    "Contact page with two office locations",
+    "Password-protected admin panel for content management"
+  ],
+  "category": "company-website",
+  "tags": [
+    "corporate",
+    "it-services",
+    "professional",
+    "warm-design",
+    "animated"
+  ],
+  "last_updated": "2026-05-27T18:57:25.677Z"
+}

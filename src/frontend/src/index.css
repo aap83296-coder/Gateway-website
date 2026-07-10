@@ -1,0 +1,316 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* GSI Navy / Amber palette — white background */
+    --background: 0.96 0.015 75;
+    --foreground: 0.2 0.03 50;
+    --card: 0.97 0.012 78;
+    --card-foreground: 0.2 0.03 50;
+    --popover: 0.97 0.012 78;
+    --popover-foreground: 0.2 0.03 50;
+
+    /* Navy primary */
+    --primary: 0.72 0.17 70;
+    --primary-foreground: 0.97 0.01 78;
+
+    /* Amber accent */
+    --accent: 0.55 0.18 30;
+    --accent-foreground: 0.97 0.01 30;
+
+    --secondary: 0.93 0.025 78;
+    --secondary-foreground: 0.28 0.04 50;
+
+    --muted: 0.93 0.02 78;
+    --muted-foreground: 0.5 0.03 55;
+
+    --destructive: 0.5 0.2 25;
+    --destructive-foreground: 0.96 0.01 25;
+
+    --border: 0.87 0.03 72;
+    --input: 0.87 0.03 72;
+    --ring: 0.72 0.17 70;
+
+    --chart-1: 0.72 0.18 65;
+    --chart-2: 0.6 0.118 184;
+    --chart-3: 0.398 0.07 227;
+    --chart-4: 0.828 0.189 84;
+    --chart-5: 0.769 0.188 70;
+
+    --sidebar: 0.94 0.02 75;
+    --sidebar-foreground: 0.2 0.03 50;
+    --sidebar-primary: 0.72 0.17 70;
+    --sidebar-primary-foreground: 0.96 0.01 70;
+    --sidebar-accent: 0.96 0 0;
+    --sidebar-accent-foreground: 0.72 0.17 70;
+    --sidebar-border: 0.88 0.025 75;
+    --sidebar-ring: 0.72 0.17 70;
+
+    /* Custom GSI tokens */
+    --gsi-navy: 0.22 0.08 255;
+    --gsi-navy-dark: 0.14 0.06 255;
+    --gsi-navy-mid: 0.3 0.09 253;
+    --gsi-amber: 0.72 0.18 65;
+    --gsi-amber-light: 0.82 0.16 75;
+
+    --gsi-sky-blue: 0.86 0.16 203;
+    --gsi-crimson: 0.577 0.245 27;
+
+    --gs-amber: 0.72 0.18 65;
+    --gs-amber-dark: 0.55 0.17 55;
+    --gs-amber-light: 0.83 0.16 75;
+    --gs-brown: 0.3 0.05 50;
+    --gs-charcoal: 0.2 0.03 50;
+    --gs-gold: 0.78 0.18 72;
+    --gs-warm-tan: 0.9 0.025 76;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-size: 1.0625rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-gsi-navy {
+    color: oklch(var(--gsi-navy));
+  }
+  .text-gsi-amber {
+    color: oklch(var(--gsi-amber));
+  }
+  .bg-gsi-navy {
+    background-color: oklch(var(--gsi-navy));
+  }
+  .bg-gsi-navy-dark {
+    background-color: oklch(var(--gsi-navy-dark));
+  }
+  .bg-gsi-amber {
+    background-color: oklch(var(--gsi-amber));
+  }
+  .border-gsi-amber {
+    border-color: oklch(var(--gsi-amber));
+  }
+  .border-gsi-navy {
+    border-color: oklch(var(--gsi-navy));
+  }
+  .gsi-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--gsi-navy-dark)) 0%,
+      oklch(var(--gsi-navy)) 60%,
+      oklch(0.3 0.1 253) 100%
+    );
+  }
+  .gsi-amber-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--gsi-amber)) 0%,
+      oklch(var(--gsi-amber-light)) 100%
+    );
+  }
+  .section-padding {
+    @apply py-20 px-4 md:px-8;
+  }
+}
+
+/* === Watermark Design === */
+.gsi-watermark {
+  position: relative;
+}
+.gsi-watermark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/generated/gateway-logo-clean.dim_600x200.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 500px auto;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+.gsi-watermark > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gsi-watermark-tiled::before {
+  background-image: url("/assets/generated/gateway-logo-clean.dim_600x200.png");
+  background-repeat: repeat;
+  background-size: 350px auto;
+  opacity: 0.03;
+}
+
+/* === Hero Graphic Effects === */
+
+/* Pulsing glow on hero title */
+@keyframes heroPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 0px rgba(100, 160, 255, 0);
+  }
+  50% {
+    text-shadow: 0 0 24px rgba(100, 160, 255, 0.35), 0 0 48px
+      rgba(80, 140, 255, 0.18);
+  }
+}
+
+.hero-glow-text {
+  animation: heroPulse 3s ease-in-out infinite;
+}
+
+/* Shimmer sweep */
+@keyframes heroShimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.hero-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    oklch(0.3 0.05 50) 0%,
+    oklch(0.45 0.1 55) 30%,
+    oklch(0.78 0.2 72) 45%,
+    oklch(0.95 0.08 80) 55%,
+    oklch(0.78 0.2 72) 65%,
+    oklch(0.45 0.1 55) 75%,
+    oklch(0.3 0.05 50) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: heroShimmer 2.8s linear infinite;
+}
+
+/* Blinking badge dot */
+@keyframes badge-dot-blink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(0.75);
+  }
+}
+
+.hero-badge-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: oklch(0.82 0.16 75);
+  box-shadow: 0 0 6px 2px oklch(0.82 0.16 75 / 0.6);
+  animation: badge-dot-blink 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* Floating orbs */
+@keyframes float-orb {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-220px) translateX(var(--orb-drift, 20px)) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float-orb var(--orb-duration, 6s) ease-in-out infinite;
+  animation-delay: var(--orb-delay, 0s);
+}
+
+/* Navbar smooth transition */
+header[class*="fixed"] {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* === Word Art Golden Shine === */
+@keyframes wordArtShine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.wordart-shine {
+  background: linear-gradient(
+    90deg,
+    oklch(0.25 0.04 50) 0%,
+    oklch(0.35 0.06 52) 28%,
+    oklch(0.78 0.2 72) 42%,
+    oklch(0.95 0.1 80) 50%,
+    oklch(0.78 0.2 72) 58%,
+    oklch(0.35 0.06 52) 72%,
+    oklch(0.25 0.04 50) 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: wordArtShine 3s linear infinite;
+  text-shadow: none;
+  filter: drop-shadow(0 0 10px oklch(0.72 0.18 65 / 0.3));
+}
